@@ -3,7 +3,7 @@
 const url = 'http://localhost:3000/api/cameras';
 let apiRequest = new XMLHttpRequest();
 const getAllProduct = document.getElementById('getallproduct');
-
+let id = 0;
 
 apiRequest.onreadystatechange = function () {
 
@@ -28,44 +28,39 @@ function displayProduct(array) {
         +'Name:' + ''+ array[i].name + '<br>' 
          + 'price:' + '' + array[i].price + '<br>' 
          + 'Description:'+ ''  + array[i].description + '<br>'
-         +  '<button type="button" >' +'Discover more'+ '</button>' +'</li>'
+         + '<a href="./productPage.html">' + '<button type="button"  onclick="displaySingleProduct(\'' +array[i]._id +'\')"   id="buttonsinglePage">'
+          +'Discover more'+ '</button>' +'<a/>' +'</li>'
+         
     }
     listProduct += ' </ul>';
     getAllProduct.innerHTML = listProduct;
 
 }
 
-/*+ /'<a href =>'+ 'Discover more' + '</a>'+ '</li>';*/
+/*------------------------------------------------------------------------------------------------------------------*/
+
+
 
 /* single page */
-let singleApi = new XMLHttpRequest;
-const singlePage = document.getElementById('singlepage');
 
 
-singleApi.onreadystatechange = function(){
-    if (singleApi.readyState === 4){
-        if (singleApi.status === 404){
-            return singleApi.textContent='page not found';
-        }else{
-            let singlePageResponse = JSON.parse(singleApi.response);
-            displySingleProduct(singlePageResponse);
+let productPage = document.getElementById('productId');
+ //document.getElementById("buttonsinglePage").addEventListener('click',displaySingleProduct);
+function displaySingleProduct(productId){
+    let singlePageApiRequest =new.XMLHttpRequest();
+    singlePageApiRequest.onreadystatechange= function(){
+        if (singlePageApiRequest.readyState === 4){
+            if( singlePageApiRequest.status === 404){
+           productPage.textContent ='page not fond';
+            }else{
+                let singlePageResponse = JSON.parse(singlePageApiRequest.response);
+                productPage();
+            }
         }
     }
+    singlePageApiRequest.open('GET',url+'/'+productPage);
+    singlePageApiRequest.send
 }
 
-singleApi.open('GET',url,'/:_id -5be9c8541c9d440000665243');
-singleApi.send;
-function displySingleProduct (array){
- let singleA = '<ul>';
-singleA = '<li>' + '<img src ='+ array.imageUrl  + '> ' + '</li>'+
-            '<li>' + array.name + '</li>' +
-            '<li>' + array.price + '</li>'+
-            '<li>' + array.description + '</li>'+
-            '<li>' + array.lenses + '</li>';
-            
+console.log('hi');
 
-}
-singleA = '</ul>';
-singlePage.innerHTML = singleA;
-
-         
