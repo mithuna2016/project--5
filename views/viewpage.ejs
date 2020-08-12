@@ -1,9 +1,17 @@
 <%- include('./header') -%>
 
+<ul>
+    <%  allproducts.forEach(function(allItem){ %>
 
-<h1>home</h1>
-
-
+        <li><%=allItem.image%></li>
+        <li> <%=allItem.name%></li>
+        <li> <%=allItem.price%></li>
+        
+        <li><a href="/aboutpage/<%=allItem.id%>">Discover More</a></li>
+        
+    </ul>
+    
+  
 
 
 
