@@ -3,15 +3,13 @@
 <ul>
     <%  allproducts.forEach(function(allItem){ %>
 
-        <li><%=allItem.image%></li>
+        <li>  <img src= <%=allItem.imageUrl%> alt="camera image" width="150" height="150"> </li>
         <li> <%=allItem.name%></li>
         <li> <%=allItem.price%></li>
         
-        <li><a href="/aboutpage/<%=allItem.id%>">Discover More</a></li>
-        
+        <li><a href="/aboutpage/<%=allItem._id%>">Discover More</a></li>
+        <% }); %>
     </ul>
-    
-  
 
 
 
