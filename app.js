@@ -45,12 +45,13 @@ module.exports = app;
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended:true}))
-app.use(express.static("public"));
 
+app.use(express.static(path.join(__dirname, 'public')));
 
 //-------------------------------------------------------------------------------------------------------------
 //array for allitem
 let allItems =[{}];
+let cartItem=[{}];
 //get for view page
 app.get("/", function(req, res){
   
@@ -73,6 +74,7 @@ allItems = allProducts;
 });
 });
 
+
 // when click link to the about page
 app.get("/aboutpage/:itemId" ,function(req,res){
  //route params
@@ -92,9 +94,7 @@ app.get("/aboutpage/:itemId" ,function(req,res){
         lenses:ProductID.lenses
       });
     }
-    
-  });
- 
-
+   
 });
 
+});

@@ -1,0 +1,52 @@
+/*prevent default */
+body{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+li{
+    list-style: none;
+    line-height: 1.9;
+}
+a{
+    text-decoration: none;
+}
+/*viewpage */
+.more{
+    padding: 20px;
+     font-family:Montserrat-Black ; 
+     font-weight: 600; 
+     font-size: 20px;
+}
+#dis-more{
+    color:black;
+}
+/*aboutpage */
+.pic{
+    padding: 30px;
+}
+.half{
+    padding: 30px;
+   
+}
+.main-name{
+    font-family:Serif;
+    font-weight: 600;
+    font-size: 30px;
+   color: midnightblue;
+}
+.main-price{
+    border:solid 1px orangered;
+    width: 30%;
+    font-family:Serif;
+    font-weight: 600;
+    font-size: 30px;
+   color: orangered;
+   text-align: center;
+}
+.main{
+    font-family:Serif;
+    line-height: 1.5;
+    font-size: 30px;
+   
+}

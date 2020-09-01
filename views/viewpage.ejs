@@ -1,15 +1,26 @@
 <%- include('./header') -%>
 
-<ul>
+    
+<div class="container-fluid"  >
+    
+    <ul class="row"  >
+       
     <%  allproducts.forEach(function(allItem){ %>
-
-        <li>  <img src= <%=allItem.imageUrl%> alt="camera image" width="150" height="150"> </li>
+         
+        <div class="col-lg-6 more" >
+      
+        <li>  <img src= <%=allItem.imageUrl%> alt="camera image" width="300" height="300"> </li>
         <li> <%=allItem.name%></li>
         <li> <%=allItem.price%></li>
         
-        <li><a href="/aboutpage/<%=allItem._id%>">Discover More</a></li>
+        <button type="button" class="btn btn-outline-info btn-lg" ><a href="/aboutpage/<%=allItem._id%>" id="dis-more">Discover More</a></button>
+    </div>
         <% }); %>
+
+
     </ul>
+
+</div>
 
 
 
