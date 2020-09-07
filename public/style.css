@@ -3,6 +3,7 @@ body{
     margin: 0;
     padding: 0;
     text-decoration: none;
+    background-color: lightcyan;
 }
 li{
     list-style: none;
@@ -12,41 +13,140 @@ a{
     text-decoration: none;
 }
 /*viewpage */
+
 .more{
-    padding: 20px;
-     font-family:Montserrat-Black ; 
-     font-weight: 600; 
-     font-size: 20px;
+  text-align: center;
+  width: auto;
+  height: auto;
+  margin: 20px auto;
+  padding: 10px 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.7);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+  position: relative;
+  background:lightblue;
+  background: -moz-linear-gradient(45deg, #dadfe1 0%, #e8edef 20%, #f9feff 100%);
+  background: -webkit-linear-gradient(45deg, #dadfe1 0%, #e8edef 20%, #f9feff 100%);
+  background: linear-gradient(45deg, #dadfe1 0%, #e8edef 20%, #f9feff 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dadfe1', endColorstr='#f9feff',GradientType=1 );
 }
 #dis-more{
     color:black;
 }
 /*aboutpage */
-.pic{
-    padding: 30px;
-}
-.half{
-    padding: 30px;
+ .layout{
+   margin-top: 30px;
+ }
+  .pic{
+padding : 10px;
+
+  }
+  .info h1 {
+    font-size: 1.8em;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .info p {
+    clear: both;
+    margin-bottom: 7px;
+    line-height: 1.5em;
+    font-size: 1em;
+    letter-spacing: 0.5px;
+  }
+  .info #pricing, .info #coloring {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9em;
+    color: #D64541;
+  }
+  .info #price {
+    margin-top: 15px;
    
-}
-.main-name{
-    font-family:Serif;
-    font-weight: 600;
-    font-size: 30px;
-   color: midnightblue;
-}
-.main-price{
-    border:solid 1px orangered;
-    width: 30%;
-    font-family:Serif;
-    font-weight: 600;
-    font-size: 30px;
-   color: orangered;
-   text-align: center;
-}
-.main{
-    font-family:Serif;
-    line-height: 1.5;
-    font-size: 30px;
+  }
+  .important {
+    width: 50%;
+    float: left;
+    margin-top: 15px;
+  }
+  
+  .form {
+    width: 50%;
+    float: right;
+    margin-top: 15px;
+  }
+  .form .color {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0 20px;
+    width: 100%;
+    border: none;
+    background: lightblue;
+    font-size: 0.9em;
+    letter-spacing: 1px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    color: #444B54;
+    cursor: pointer;
+    font-weight: 400;
+  }
+  .form .color:hover {
+    background: lightblue;
+  }
+  .cartButton {
+    width: 100%;
+    margin-top: 30px;
+    background:#1565C0;
+    padding: 20px 0;
+    font-size: 1.1em;
+    line-height: 1.1em;
+    letter-spacing: 1px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    color: #F2F2F2;
+    cursor: pointer;
+  }
+  /*-------------------------------------------------------------------------------*/
+  @media all and (min-width: 1000px) {
+    /*viwepage*/
+    .more{
+      margin: 50px auto;
+  padding: 20px 20px;
+    }
+    /*about page*/
+    .layout{
+      width: 1000px;
+      height: auto;
+      margin: 20px auto;
+      box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.7);
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      border-radius: 5px;
+      position: relative;
+      background:lightblue;
+      background: -moz-linear-gradient(45deg, #dadfe1 0%, #e8edef 30%, #f9feff 100%);
+      background: -webkit-linear-gradient(45deg, #dadfe1 0%, #e8edef 30%, #f9feff 100%);
+      background: linear-gradient(45deg, #dadfe1 0%, #e8edef 30%, #f9feff 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dadfe1', endColorstr='#f9feff',GradientType=1 );
+    }
    
-}
+    .pic{
+     padding: 50px;
+   }
+   .info {
+    width: 440px;
+    height: 100%;
+    padding: 50px 50px 50px 0;
+    
+  }
+  }
+  
+  

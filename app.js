@@ -91,10 +91,32 @@ app.get("/aboutpage/:itemId" ,function(req,res){
         name: ProductID.name,
         price: ProductID.price,
         description :ProductID.description,
-        lenses:ProductID.lenses
+        lenses:ProductID.lenses,
+        
       });
     }
    
 });
+  
 
+
+});
+
+ 
+app.get("/cartpage" ,function(req,res){
+  res.render('cartpage',{
+    
+  });
+});
+
+app.get("/checkout" ,function(req,res){
+  res.render('checkoutpage',{
+    
+  });
+});
+
+app.post("/checkout" ,function(req,res){
+  res.render('checkoutpage',{
+    
+  });
 });

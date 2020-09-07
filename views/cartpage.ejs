@@ -1,11 +1,63 @@
 <%- include('./header') -%>
 
 
+<script>
+let displayTable = document.getElementsByClassName('displayData');
+let displayTable = document.getElementsByClassName('namecoloum');
+let displayTable = document.getElementsByTagName('img').setatribute;
+let displayTable = document.getElementsByClassName('displayData');
+
+const selectedItem = sessionStorage.getItem('selectedItem');
+const selectId = JSON.parse(selectedItem);
+selectId.forEach(cartDisplay());
+function cartDisplay(cartItems) {
+    
+}
 
 
 
+</script>
 
-
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th class="text-center">Price</th>
+                        <th class="text-center">Total</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="displayData" >
+                        <td class="col-sm-8 col-md-6 namecoloum">
+                        <div class="media">
+                             <img class="media-object" >
+                            <div class="media-body">
+                                <h4 class="media-heading">Product name</h4>
+                                <h5 class="media-heading"> Brand name</h5>
+                                
+                            </div>
+                        </div></td>
+                        <td class="col-sm-1 col-md-1 quantitycoloum" style="text-align: center">
+                        <input type="number" class="form-control value" id="exampleInputEmail1" value="1">
+                        </td>
+                        <td class="col-sm-1 col-md-1 text-center singleprice"><strong>$4.87</strong></td>
+                        <td class="col-sm-1 col-md-1 text-center Totalprice"><strong>$14.61</strong></td>
+                        <td class="col-sm-1 col-md-1">
+                        <button type="button" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove"></span> Remove
+                        </button></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 
 
