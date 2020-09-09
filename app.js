@@ -116,7 +116,15 @@ app.get("/checkout" ,function(req,res){
 });
 
 app.post("/checkout" ,function(req,res){
-  res.render('checkoutpage',{
-    
-  });
+ const userInform = {
+userName : req.body.firstName + req.body.lastName,
+userAddress :req.body.address,
+userAddress2:req.body.address2,
+userCountry:req.body.country,
+userPostcode:req.body.postCode,
+userCardNumber:req.body.cardNumber
+
+ };
+ 
+
 });

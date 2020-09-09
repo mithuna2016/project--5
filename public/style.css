@@ -12,6 +12,17 @@ li{
 a{
     text-decoration: none;
 }
+#logoName{
+  font-family: 'Alegreya', serif;
+
+  
+}
+
+.footer-section{
+  box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.7);
+  
+  text-align: center;
+}
 /*viewpage */
 
 .more{
@@ -98,6 +109,9 @@ padding : 10px;
   .form .color:hover {
     background: lightblue;
   }
+  button{
+    font-family: 'Alegreya', serif;
+  }
   .cartButton {
     width: 100%;
     margin-top: 30px;
@@ -115,6 +129,11 @@ padding : 10px;
   }
   /*-------------------------------------------------------------------------------*/
   @media all and (min-width: 1000px) {
+
+    #logoName{
+      font-size: 60px;
+      margin-left: 60px;
+    }
     /*viwepage*/
     .more{
       margin: 50px auto;
@@ -124,7 +143,7 @@ padding : 10px;
     .layout{
       width: 1000px;
       height: auto;
-      margin: 20px auto;
+      margin: 40px auto;
       box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.7);
       -webkit-border-radius: 5px;
       -moz-border-radius: 5px;

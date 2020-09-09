@@ -1,44 +1,61 @@
 <%- include('./header') -%>
 
+
 <script>
+
     function addToStroage() {
-        var lenses = document.getElementById('exampleFormControlSelect1');
-        var selectedLense = lense.options[lense.selectedIndex].value;
-        let item = {
+        var lenses = document.getElementById('lense');
+        var selectedLense = lenses.options[lenses.selectedIndex].value;
+        const item = {
+            img:"<%=imageUrl%>",
             name: "<%= name %>",
             price: "<%= price %>",
             lense: selectedLense
         }
-        sessionStorage.setItem('selectedItem', JSON.stringify(item));
+        existingProduct = JSON.parse(sessionStorage.getItem('selectedItem'));
+        if (existingProduct) {
+            existingProduct.push(item);
+            sessionStorage.setItem('selectedItem', JSON.stringify(existingProduct));
+        }
+        else {
+            cartArray = []
+            cartArray.push(item)
+            sessionStorage.setItem('selectedItem', JSON.stringify(cartArray));
+        }
+      
     }
 </script>
 
+
+
+
 <div class="container-fluid layout ">
     <div class="row ">
-        <div  class="col-md-6  pic" > <img  src="<%=imageUrl%>" alt="camera image" width="320" height="320"  > </div>
+        <div class="col-md-6  pic"> <img src="<%=imageUrl%>" alt="camera image" width="320" height="320"> </div>
         <div class="col-md-6   ">
             <div class="info">
-            <h1 class="main-name"> <%= name %></h1>
-            <p class="main"> <%= description %> </p>
-            <div class="important">
-                <p id="pricing">Price<p>
-                <h1 id="price"><%= price %></h1>
-              </div>
-              <div class="form">
-                <p id="coloring">Choose Lense</p>
-            <select id="lense "  class="color">
-                <% lenses.forEach(function(allItem){ %>
-                <option  class="dropdown-item"     value="<%= allItem %>"> <%= allItem %> </option>
-                <% }); %>
-            </div>
+                <h1 class="main-name"> <%= name %></h1>
+                <p class="main"> <%= description %> </p>
+                <div class="important">
+                    <p id="pricing">Price
+                    <p>
+                    <h1 id="price"><%= price %></h1>
+                </div>
+                <div class="form">
+                    <p id="coloring">Choose Lense</p>
+                    <select id="lense" class="color">
+                        <% lenses.forEach(function(allItem){ %>
+                        <option class="dropdown-item" value="<%= allItem %>"> <%= allItem %> </option>
+                        <% }); %>
+                </div>
 
-            </select>
-        </div>
+                </select>
+            </div>
             <button class="btn btn-outline-info btn-lg cartButton" onclick="addToStroage()"> Add to Basket</button>
         </div>
-        </div>
-        </div>
     </div>
+</div>
+</div>
 
 
 
