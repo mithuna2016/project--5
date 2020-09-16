@@ -60,18 +60,22 @@
                                     }
                                 }
                             }
-                            let totalId = [selectedItemArray[i].quantityTotal];
-                            
-                            
-                         
+                            let totalId = [];
+                            totalId = selectedItemArray[i].quantityTotal;
+                            //var tot = 0;
+                            //for (var i = 0; i < totalId.length; i++) {
+                               // var linetot = 0;
+                               // tot += linetot;
+                            }
+                           // console.log(tot);
 
-                          
-                               // let reduced =totalId.reduce((prev, next) => prev + next);
-                                //console.log(reduced);
-                                let finaltotal= totalId.reduce(function (total,sum) {
-                                 return total + sum;
-                                },0);
-console.log(finaltotal);
+                           // document.getElementById('fullTotal').textContent = tot
+                                //const reduced =[totalId].reduce((prev, next) => prev + nextq);
+                               // console.log(reduced);
+                                // let finaltotal= totalId.reduce(function (total,sum) {
+                                // return total + sum;
+                                //});
+
                                 // document.getElementById("fullTotal").textContent = finaltotal;
                             }
 
