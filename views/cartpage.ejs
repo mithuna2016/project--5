@@ -1,15 +1,10 @@
 <%- include('./header') -%>
 
-
-
-
-
-
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
 
-            <table class="table table-hover">
+            <table class="table table-hover" id="table">
 
                 <thead>
                     <tr>
@@ -18,77 +13,114 @@
                         <th class="text-center">Price</th>
 
                         <th class="text-center">Total</th>
-                        <th> </th>
+                        <th> </th>
                     </tr>
                 </thead>
                 <tbody>
+
                     <script>
                         const selectedItemArray = JSON.parse(sessionStorage.getItem('selectedItem'));
-
+                        ;
                         for (var i = 0; i < selectedItemArray.length; i++) {
+                            let selectName = selectedItemArray[i].name;
+                            let selectLense = selectedItemArray[i].lense;
+
+
                             document.write('<tr id="itemRow">');
                             document.write('<td class="col-sm-8 col-md-6 namecoloum">');;
                             document.write(' <div class="media">');
-                            document.write(' <img class="media-object" src="selectedItemArray[i].img" >')
+
+                            document.write(` <img class="media-object" src="${selectedItemArray[i].img}"  width="50" height="50">`)
                             document.write('<div class="media-body">');
                             document.write('  <h4 class="media-heading">' + selectedItemArray[i].name + '</h4> ');
                             document.write('<h5 class="media-heading">' + selectedItemArray[i].lense + '  </h5>');
-                            document.write('</div>')
-                            document.write('</div>')
-                            document.write('</td>')
+                            document.write('</div>');
+                            document.write('</div>');
+                            document.write('</td>');
                             document.write(' <td class="col-sm-1 col-md-1 quantitycoloum" style="text-align: center">');
-                            document.write('<input type="number" class="form-control value" onchange="quantityTotal()"id="exampleInputEmail1" value="1">');
+                            document.write('<strong>' + selectedItemArray[i].quantity + '</strong>');
                             document.write('</td>')
-                            document.write('<td class="col-sm-1 col-md-1 text-center singleprice"><strong id="price">' + selectedItemArray[i].price + '</strong></td>')
-                            document.write(' <td class="col-sm-1 col-md-1 text-center Totalprice"><strong id="quantityTotal"> </strong></td>');
-                            function quantityTotal() {
-                                let inputValue = document.getElementById('exampleInputEmail1');
-                                let itemPrice = document.getElementById('price');
-                               let quantitySum = inputValue.value * itemPrice.value;
-                                document.getElementById('quantityTotal').innerHTML = quantitySum;
-                            };
+                            document.write('<td class="col-sm-1 col-md-1 text-center singleprice"><strong >' + selectedItemArray[i].price + '</strong> </td>');
+                            document.write(' <td class="col-sm-1 col-md-1 text-center totalPrice"><strong ">' + selectedItemArray[i].quantityTotal + '</strong></td>');
                             document.write(' <td class="col-sm-1 col-md-1">')
-                                document.write('<button type="button" class="btn btn-danger" onclick="deletRow(\'' + selectedItemArray[i].name +'\')"  ><span class="glyphicon glyphicon-remove"></span> Remove </button></td>')
-                                document.write('</tr>')
+                            document.write('<button type="button" class="btn btn-danger" onclick="deletRow(this,\'' + selectedItemArray[i].name, selectedItemArray[i].lense + '\')"  ><span class="glyphicon glyphicon-remove">Remove</span>  </button></td>');
+                            document.write('</tr>');
+                            //delete the item
+                            function deletRow(row, item) {
+                                //delete from row
+                                var i = row.parentNode.parentNode.rowIndex;
+                                document.getElementById("table").deleteRow(i);
+                                // delete from sessionStorage
+                                let existingProduct = JSON.parse(sessionStorage.getItem('selectedItem'));
+                                for (i = 0; i < existingProduct.length; i++) {
+                                    let checkItem = existingProduct[i].name + existingProduct[i].lense;
+                                    if (item === checkItem) {
+                                        existingProduct.splice(i, 1);
+                                        sessionStorage.setItem('selectedItem', JSON.stringify(existingProduct));
+                                    }
+                                }
+                            }
+                            let totalId = [selectedItemArray[i].quantityTotal];
                             
-                                function deletRow(productName){
-                          let itemRow = document.getElementById(itemRow);
-                          itemRow.remove();
-                        }
+                            
+                         
 
-                        }
-                        
-                       
+                          
+                               // let reduced =totalId.reduce((prev, next) => prev + next);
+                                //console.log(reduced);
+                                let finaltotal= totalId.reduce(function (total,sum) {
+                                 return total + sum;
+                                },0);
+console.log(finaltotal);
+                                // document.getElementById("fullTotal").textContent = finaltotal;
+                            }
+
+                            document.write('<tr>');
+                            document.write(' <td> </td>');
+                            document.write(' <td> </td>');
+                            document.write('<td> </td>');
+                            document.write(' <td>');
+                            document.write('  <h3>Total</h3>');
+                            document.write(' </td>');
+                            document.write(' <td class="text-right"> ');
+
+                            document.write(' <h3><strong id="fullTotal"></strong></h3>');
+                            document.write(' </td>');
+                            document.write(' </tr>');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     </script>
-      
-      <tr>
-        <td>   </td>
-        <td>   </td>
-        <td>   </td>
-        <td><h3>Total</h3></td>
-        <td class="text-right"><h3><strong id="total"></strong></h3></td>
-    </tr>
-    <tr>
-        <td>   </td>
-        <td>   </td>
-        <td>   </td>
-        <td>
-        <button type="button" class="btn btn-outline-info btn-lg ">
-            <span class="glyphicon glyphicon-shopping-cart">Continue Shopping</span> 
-        </button></td>
-        <td>
-        <button type="button" class="btn btn-outline-info btn-lg ">
-           <span class="glyphicon glyphicon-play">Checkout </span>
-        </button></td>
-    </tr>
+                    <tr>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td>
+                            <button type="button" class="btn btn-outline-info btn-lg ">
+                                <span class="glyphicon glyphicon-shopping-cart"> <a href="/"> Shopping</a></span>
+                            </button></td>
+                        <td>
+                            <button type="button" class="btn btn-outline-info btn-lg ">
+                                <span class="glyphicon glyphicon-play"><a href="/checkoutpage">Checkout</a> </span>
+                            </button></td>
 
-    </tbody>
-    </table>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
-</div>
-</div>
-
-
 
 
 

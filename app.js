@@ -109,13 +109,15 @@ app.get("/cartpage" ,function(req,res){
   });
 });
 
-app.get("/checkout" ,function(req,res){
+app.get("/checkoutpage" ,function(req,res){
   res.render('checkoutpage',{
     
   });
 });
 
-app.post("/checkout" ,function(req,res){
+app.post("/checkoutpage" ,function(req,res){
+ 
+
  const userInform = {
 userName : req.body.firstName + req.body.lastName,
 userAddress :req.body.address,
@@ -125,6 +127,7 @@ userPostcode:req.body.postCode,
 userCardNumber:req.body.cardNumber
 
  };
+ console.log(userInform);
  
 
 });

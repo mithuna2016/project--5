@@ -2,18 +2,32 @@
 
 
 <script>
-
+   
+    
     function addToStroage() {
-        var lenses = document.getElementById('lense');
-        var selectedLense = lenses.options[lenses.selectedIndex].value;
-        const item = {
+        quantity = document.getElementById('exampleInputEmail1').value;
+        let lenses = document.getElementById('lense');
+        let selectedLense = lenses.options[lenses.selectedIndex].value;
+        let pricePerUnit = "<%= price %>";
+        let quantityTotal = pricePerUnit*quantity;
+        
+        const item =
+        {
+            
             img:"<%=imageUrl%>",
             name: "<%= name %>",
-            price: "<%= price %>",
+            price:pricePerUnit ,
+            quantity:quantity,
+            quantityTotal:quantityTotal,
             lense: selectedLense
+
         }
-        existingProduct = JSON.parse(sessionStorage.getItem('selectedItem'));
+    
+       
+       let  existingProduct = JSON.parse(sessionStorage.getItem('selectedItem'));
+        
         if (existingProduct) {
+            
             existingProduct.push(item);
             sessionStorage.setItem('selectedItem', JSON.stringify(existingProduct));
         }
@@ -47,10 +61,11 @@
                         <% lenses.forEach(function(allItem){ %>
                         <option class="dropdown-item" value="<%= allItem %>"> <%= allItem %> </option>
                         <% }); %>
-                </div>
 
                 </select>
+                
             </div>
+            <input type="number" class="form-control value" id="exampleInputEmail1" value="1">
             <button class="btn btn-outline-info btn-lg cartButton" onclick="addToStroage()"> Add to Basket</button>
         </div>
     </div>
