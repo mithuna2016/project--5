@@ -1,12 +1,12 @@
 <%- include('./header') -%>
 
-<div class="container">
+<div class="container-fluid  ">
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <div class="table-responsive-sm">
+            <table  class="table table-striped  layout  " id="table">
 
-            <table class="table table-hover" id="table">
-
-                <thead>
+                <thead class=" thead-dark">
                     <tr>
                         <th>Product</th>
                         <th>Quantity</th>
@@ -20,10 +20,9 @@
 
                     <script>
                         const selectedItemArray = JSON.parse(sessionStorage.getItem('selectedItem'));
-                        ;
+                        let totalId=0 ;
                         for (var i = 0; i < selectedItemArray.length; i++) {
-                            let selectName = selectedItemArray[i].name;
-                            let selectLense = selectedItemArray[i].lense;
+                           
 
 
                             document.write('<tr id="itemRow">');
@@ -60,23 +59,14 @@
                                     }
                                 }
                             }
-                            let totalId = [];
-                            totalId = selectedItemArray[i].quantityTotal;
-                            //var tot = 0;
-                            //for (var i = 0; i < totalId.length; i++) {
-                               // var linetot = 0;
-                               // tot += linetot;
-                            }
-                           // console.log(tot);
+                            //get the total
+                           
+                            totalId += selectedItemArray[i].quantityTotal;
+                            
+                          
+                              
 
-                           // document.getElementById('fullTotal').textContent = tot
-                                //const reduced =[totalId].reduce((prev, next) => prev + nextq);
-                               // console.log(reduced);
-                                // let finaltotal= totalId.reduce(function (total,sum) {
-                                // return total + sum;
-                                //});
-
-                                // document.getElementById("fullTotal").textContent = finaltotal;
+                               
                             }
 
                             document.write('<tr>');
@@ -92,7 +82,7 @@
                             document.write(' </td>');
                             document.write(' </tr>');
 
-
+                            document.getElementById("fullTotal").innerHTML =totalId ;
 
 
 
@@ -122,6 +112,7 @@
 
                 </tbody>
             </table>
+            </div>
         </div>
     </div>
 </div>

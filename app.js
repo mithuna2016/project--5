@@ -51,7 +51,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //-------------------------------------------------------------------------------------------------------------
 //array for allitem
 let allItems =[{}];
-let cartItem=[{}];
+
 //get for view page
 app.get("/", function(req, res){
   
@@ -119,15 +119,17 @@ app.post("/checkoutpage" ,function(req,res){
  
 
  const userInform = {
-userName : req.body.firstName + req.body.lastName,
+userFirstName : req.body.firstName ,
+userLastName :req.body.lastName,
+
 userAddress :req.body.address,
 userAddress2:req.body.address2,
 userCountry:req.body.country,
 userPostcode:req.body.postCode,
-userCardNumber:req.body.cardNumber
+userEmail:req.body.email
+
 
  };
- console.log(userInform);
  
-
+ 
 });

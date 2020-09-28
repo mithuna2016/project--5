@@ -127,6 +127,10 @@ padding : 10px;
     color: #F2F2F2;
     cursor: pointer;
   }
+/* card page */
+
+
+
   /*-------------------------------------------------------------------------------*/
   @media all and (min-width: 1000px) {
 
@@ -165,6 +169,9 @@ padding : 10px;
     height: 100%;
     padding: 50px 50px 50px 0;
     
+  }
+  .layout{
+   padding: 50px;
   }
   }
   
