@@ -20,11 +20,13 @@
 
                     <script>
                         const selectedItemArray = JSON.parse(sessionStorage.getItem('selectedItem'));
+                        
+                        
                         let totalId=0 ;
                         for (var i = 0; i < selectedItemArray.length; i++) {
                            
-
-
+                            let id =selectedItemArray[i].itemId;
+                            console.log(id);
                             document.write('<tr id="itemRow">');
                             document.write('<td class="col-sm-8 col-md-6 namecoloum">');;
                             document.write(' <div class="media">');

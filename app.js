@@ -81,10 +81,10 @@ app.get("/aboutpage/:itemId" ,function(req,res){
   const requestedId = req.params.itemId;
   
  //access allItems array
-  allItems .forEach(function(ProductID){
+  allItems.forEach(function(ProductID){
    
    const storedId  = ProductID._id ;
-    
+   
     if (storedId === requestedId) {
       res.render("aboutPage", {
         imageUrl:ProductID.imageUrl,
@@ -92,8 +92,12 @@ app.get("/aboutpage/:itemId" ,function(req,res){
         price: ProductID.price,
         description :ProductID.description,
         lenses:ProductID.lenses,
+        itemId:storedId
+       
+      
         
       });
+      
     }
    
 });

@@ -13,7 +13,7 @@
         
         const item =
         {
-            
+            itemId:"<%=itemId%>",
             img:"<%=imageUrl%>",
             name: "<%= name %>",
             price:pricePerUnit ,
@@ -22,8 +22,8 @@
             lense: selectedLense
 
         }
-    
-       
+   
+       console.log(item);
        let  existingProduct = JSON.parse(sessionStorage.getItem('selectedItem'));
         
         if (existingProduct) {

@@ -193,47 +193,71 @@ form.classList.add('was-validated');
 //post 
 function postItem(){
   const userInform = {
-userFirstName :document.getElementById('firstName').value ,
-userLastName :document.getElementById('lastName').value,
-userAddress :document.getElementById('address').value,
-userAddress2:document.getElementById('address2').value,
-userPostcode:document.getElementById('zip').value,
-userEmail:document.getElementById('email').value
+firstName :document.getElementById('firstName').value ,
+lastName :document.getElementById('lastName').value,
+address :document.getElementById('address').value,
+city:document.getElementById('address2').value,
+email:document.getElementById('email').value
 };
 const finalItem = JSON.parse(sessionStorage.getItem('selectedItem'));
-submitForm(userInform,finalItem);
+let productId =[""];
+for (var i = 0; i < finalItem.length; i++) {
+productId = finalItem[i].itemId;
+
+};
+
+let data = {contact:userInform,products:[productId]};
+
+submitForm(data);
 };
 //post request
-function makeRequest(userInform,finalItem) {
+function makeRequest(data) {
+  
+ 
   return new Promise((resolve, reject) => {
     let request = new XMLHttpRequest();
     const url ="http://localhost:3000/api/cameras";
-    request.open('POST', url + '/order');
+    request.open('POST', url +'/order');
     request.onreadystatechange = () => {
       if (request.readyState === 4) {
         if (request.status === 201) {
           resolve(JSON.parse(request.response));
+        
         } else {
           reject(JSON.parse(request.response));
         }
       }
     };
-    request.setRequestHeader('Content-Type', 'application/json');
+    request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
     request.send(JSON.stringify(data));
+  
+    
   });
+ 
 };
 //get back data from backend
-async function submitForm(userInform,finalItem){
+async function submitForm(data){
+ 
   try{
-    const requstPromise = makeRequest(userInform,finalItem);
-    const response = await requstPromise;
+    const requestPromise = makeRequest(data);
+    
+    const response = await requestPromise;
     console.log(response);
-    let detail= +'<h1>' + response.message +
+    
+   
+    
+   let order = document.getElementById('order');
+   
+order.textContent= "here is your order id :" + response.orderId + response.contact ;
+   
 
   
 
-  }catch{
-console.log(erroResponse.error);
+  }catch(errorResponse){
+ let demo =document.getElementById('demo')
+ demo.textContent = errorResponse.error;
+
   }
 };
 
@@ -254,7 +278,7 @@ console.log(erroResponse.error);
             <span aria-hidden="true"></span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" id="order">
          
         
         </div>
