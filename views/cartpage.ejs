@@ -19,14 +19,15 @@
                 <tbody>
 
                     <script>
+                        //get the data from session storage -------------------------------------------------
                         const selectedItemArray = JSON.parse(sessionStorage.getItem('selectedItem'));
-                        
-                        
-                        let totalId=0 ;
+                        //final total-------------------------------------
+                                            let totalId=0 ;
+                                            //display selected item -------------------------------------
                         for (var i = 0; i < selectedItemArray.length; i++) {
                            
                             let id =selectedItemArray[i].itemId;
-                            console.log(id);
+                           
                             document.write('<tr id="itemRow">');
                             document.write('<td class="col-sm-8 col-md-6 namecoloum">');;
                             document.write(' <div class="media">');
@@ -46,12 +47,12 @@
                             document.write(' <td class="col-sm-1 col-md-1">')
                             document.write('<button type="button" class="btn btn-danger" onclick="deletRow(this,\'' + selectedItemArray[i].name, selectedItemArray[i].lense + '\')"  ><span class="glyphicon glyphicon-remove">Remove</span>  </button></td>');
                             document.write('</tr>');
-                            //delete the item
+                            //delete the item---------------------------------------------------------------------
                             function deletRow(row, item) {
-                                //delete from row
+                                //delete from row-------------------------------------------------------------
                                 var i = row.parentNode.parentNode.rowIndex;
                                 document.getElementById("table").deleteRow(i);
-                                // delete from sessionStorage
+                                // delete from sessionStorage---------------------------------------------------
                                 let existingProduct = JSON.parse(sessionStorage.getItem('selectedItem'));
                                 for (i = 0; i < existingProduct.length; i++) {
                                     let checkItem = existingProduct[i].name + existingProduct[i].lense;
@@ -61,16 +62,11 @@
                                     }
                                 }
                             }
-                            //get the total
+                            //get the  final total-----------------------------------------------------------
                            
                             totalId += selectedItemArray[i].quantityTotal;
-                            
-                          
-                              
-
-                               
-                            }
-
+                             }
+//dispay total ----------------------------------------------------------------------------------------
                             document.write('<tr>');
                             document.write(' <td> </td>');
                             document.write(' <td> </td>');
@@ -79,26 +75,11 @@
                             document.write('  <h3>Total</h3>');
                             document.write(' </td>');
                             document.write(' <td class="text-right"> ');
-
                             document.write(' <h3><strong id="fullTotal"></strong></h3>');
                             document.write(' </td>');
                             document.write(' </tr>');
-
                             document.getElementById("fullTotal").innerHTML =totalId ;
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    </script>
+ </script>
                     <tr>
                         <td> </td>
                         <td> </td>

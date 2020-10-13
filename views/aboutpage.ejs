@@ -3,14 +3,14 @@
 
 <script>
    
-    
+    // button function ------------------------------------------------------------
     function addToStroage() {
         quantity = document.getElementById('exampleInputEmail1').value;
         let lenses = document.getElementById('lense');
         let selectedLense = lenses.options[lenses.selectedIndex].value;
         let pricePerUnit = "<%= price %>";
         let quantityTotal = pricePerUnit*quantity;
-        
+        //get the product detail from page ----------------------------------------------------------------------
         const item =
         {
             itemId:"<%=itemId%>",
@@ -22,8 +22,6 @@
             lense: selectedLense
 
         }
-   
-       console.log(item);
        let  existingProduct = JSON.parse(sessionStorage.getItem('selectedItem'));
         
         if (existingProduct) {

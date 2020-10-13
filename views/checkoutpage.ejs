@@ -15,10 +15,10 @@
       </h4>
       <div id="demo">
       <script>
-      //get item from session
+      //get item from session -----------------------------------------------------
        const finalItem = JSON.parse(sessionStorage.getItem('selectedItem'));
        let totalId=0 ;
-      //display cart item in ul
+      //display cart item in ul ---------------------------------------------------------------
        let listProduct = ' <ul class="list-group mb-3">';
   for (let i = 0; i < finalItem.length; i++) {
        listProduct += '<li class="list-group-item d-flex justify-content-between ">' 
@@ -28,12 +28,12 @@
         +'</div> '
        +' <span class="text-muted">'+'£'+finalItem[i].quantityTotal +'</span>'
         + '</li>'
-        //totalprice
+        //totalprice ----------------------------------------------------------------------------
         totalId +=finalItem[i].quantityTotal;
       }
       listProduct += ' </ul >';
       document.getElementById('demo').innerHTML = listProduct;
-      //total price
+      //total price --------------------------------------------------------------
       document.write('<ul class="list-group mb-1" >');
       document.write(' <li class="list-group-item d-flex justify-content-between" >');
         document.write( ' <span >Total </span>');
@@ -168,9 +168,9 @@
           </div>
         </div>
         <hr class="mb-4">
-        <button  name="button"  type="submit"class="btn btn-primary" data-toggle="modal" onclick="postItem()" data-target="#exampleModalLong">Continue to checkout</button>
+        <button  name="button"  type="submit"class="btn btn-primary margin" data-toggle="modal" onclick="postItem()" data-target="#exampleModalLong">Continue to checkout</button>
       <script>
-        //check valuvation
+        //check valuvation---------------------------------------------------------
         (function() {
 'use strict';
 window.addEventListener('load', function() {
@@ -191,7 +191,9 @@ form.classList.add('was-validated');
 
 //------------------------------------------------------------------------------------------------------------
 //post 
+//on click function for button-----------------------------------------
 function postItem(){
+  //contact infrom about user----------------------------------------------------------------------------
   const userInform = {
 firstName :document.getElementById('firstName').value ,
 lastName :document.getElementById('lastName').value,
@@ -199,21 +201,24 @@ address :document.getElementById('address').value,
 city:document.getElementById('address2').value,
 email:document.getElementById('email').value
 };
+
+//product detail from session storage -------------------------------------------------------------
 const finalItem = JSON.parse(sessionStorage.getItem('selectedItem'));
-let productId =[""];
+let productId ;
 for (var i = 0; i < finalItem.length; i++) {
 productId = finalItem[i].itemId;
 
 };
 
-let data = {contact:userInform,products:[productId]};
+let postData = {contact:userInform,products:[productId]};
 
-submitForm(data);
+//call for the responce----------------------------------------------------------------------------
+submitForm(postData);
+
 };
-//post request
+//post request---------------------------------------------------------------------------------------------
 function makeRequest(data) {
   
- 
   return new Promise((resolve, reject) => {
     let request = new XMLHttpRequest();
     const url ="http://localhost:3000/api/cameras";
@@ -230,33 +235,29 @@ function makeRequest(data) {
     };
     request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
-    request.send(JSON.stringify(data));
-  
+    request.send(JSON.stringify(data)); 
     
   });
  
 };
-//get back data from backend
+//get back data from backend-----------------------------------------------------------------------------------
 async function submitForm(data){
  
   try{
     const requestPromise = makeRequest(data);
     
     const response = await requestPromise;
-    console.log(response);
-    
-   
     
    let order = document.getElementById('order');
    
-order.textContent= "here is your order id :" + response.orderId + response.contact ;
-   
-
-  
-
-  }catch(errorResponse){
- let demo =document.getElementById('demo')
- demo.textContent = errorResponse.error;
+  //thank you messege -------------------------------------------------------------------------
+   document.getElementById('order').innerHTML= "Order Id:" + response.orderId ;
+   document.getElementById('fName').innerHTML= response.contact.firstName ;
+   document.getElementById('lName').innerHTML=  response.contact.lastName;
+   document.getElementById('add').innerHTML=  response.contact.address ;
+   document.getElementById('add2').innerHTML= response.contact.city ;
+   document.getElementById('e-mail').innerHTML=  response.contact.email ;
+}catch(errorResponse){
 
   }
 };
@@ -278,13 +279,22 @@ order.textContent= "here is your order id :" + response.orderId + response.conta
             <span aria-hidden="true"></span>
           </button>
         </div>
-        <div class="modal-body" id="order">
-         
+        <div class="modal-body">
+          <div class="container">
+            <div class="jumbotron">
+          <h3  id="order"> </h3>
+          <h5  id="fName"></h5>
+          <h5  id="lName"></h5>
+          <h5  id="add"></h5>
+          <h5  id="add2"></h5>
+          <h5  id="e-mail"></h5>
         
+</div>
+          </div>  
         </div>
         <div class="modal-footer">
           
-          <button type="button" class="btn btn-primary"><a href="/"> Shopping Again</a></button>
+          <button type="button" class="btn btn-outline-info btn-lg"><a href="/"> Shopping Again</a></button>
         </div>
       </div>
     </div>

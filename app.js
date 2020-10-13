@@ -66,25 +66,21 @@ allItems = allProducts;
  
 
 });
-//connect the ejs
+//connect the ejs ------------------------------------------------------------------------------------------
   res.render("viewpage",{
     allproducts:allItems
   });
  
 });
 });
-
-
-// when click link to the about page
+// when click link to the single product page-----------------------------------------------------------------------------
 app.get("/aboutpage/:itemId" ,function(req,res){
- //route params
+ //route params--------------------------------------------------------------------------------------
   const requestedId = req.params.itemId;
   
- //access allItems array
+ //access allItems array------------------------------------------------------------------------------------
   allItems.forEach(function(ProductID){
-   
    const storedId  = ProductID._id ;
-   
     if (storedId === requestedId) {
       res.render("aboutPage", {
         imageUrl:ProductID.imageUrl,
@@ -93,9 +89,6 @@ app.get("/aboutpage/:itemId" ,function(req,res){
         description :ProductID.description,
         lenses:ProductID.lenses,
         itemId:storedId
-       
-      
-        
       });
       
     }
@@ -106,34 +99,20 @@ app.get("/aboutpage/:itemId" ,function(req,res){
 
 });
 
- 
+ //render cartPage ---------------------------------------------------------------------
 app.get("/cartpage" ,function(req,res){
   res.render('cartpage',{
     
   });
 });
-
+//render checkoutPage --------------------------------------------------------------------------------------------------
 app.get("/checkoutpage" ,function(req,res){
   res.render('checkoutpage',{
     
   });
 });
 
-app.post("/checkoutpage" ,function(req,res){
- 
 
- const userInform = {
-userFirstName : req.body.firstName ,
-userLastName :req.body.lastName,
-
-userAddress :req.body.address,
-userAddress2:req.body.address2,
-userCountry:req.body.country,
-userPostcode:req.body.postCode,
-userEmail:req.body.email
-
-
- };
  
  
-});
+
