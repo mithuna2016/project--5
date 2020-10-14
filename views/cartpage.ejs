@@ -40,10 +40,10 @@
                             document.write('</div>');
                             document.write('</td>');
                             document.write(' <td class="col-sm-1 col-md-1 quantitycoloum" style="text-align: center">');
-                            document.write('<strong>' + selectedItemArray[i].quantity + '</strong>');
+                            document.write('<strong>'+selectedItemArray[i].quantity + '</strong>');
                             document.write('</td>')
-                            document.write('<td class="col-sm-1 col-md-1 text-center singleprice"><strong >' + selectedItemArray[i].price + '</strong> </td>');
-                            document.write(' <td class="col-sm-1 col-md-1 text-center totalPrice"><strong ">' + selectedItemArray[i].quantityTotal + '</strong></td>');
+                            document.write('<td class="col-sm-1 col-md-1 text-center singleprice"><strong >' + '£' + selectedItemArray[i].price + '</strong> </td>');
+                            document.write(' <td class="col-sm-1 col-md-1 text-center totalPrice"><strong ">'  + '£'+ selectedItemArray[i].quantityTotal + '</strong></td>');
                             document.write(' <td class="col-sm-1 col-md-1">')
                             document.write('<button type="button" class="btn btn-danger" onclick="deletRow(this,\'' + selectedItemArray[i].name, selectedItemArray[i].lense + '\')"  ><span class="glyphicon glyphicon-remove">Remove</span>  </button></td>');
                             document.write('</tr>');
@@ -78,7 +78,7 @@
                             document.write(' <h3><strong id="fullTotal"></strong></h3>');
                             document.write(' </td>');
                             document.write(' </tr>');
-                            document.getElementById("fullTotal").innerHTML =totalId ;
+                            document.getElementById("fullTotal").innerHTML = '£'+totalId ;
  </script>
                     <tr>
                         <td> </td>

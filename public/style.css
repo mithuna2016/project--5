@@ -14,9 +14,8 @@ a{
 }
 #logoName{
   font-family: 'Alegreya', serif;
-
-  
 }
+
 
 .footer-section{
   box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.7);
@@ -115,7 +114,6 @@ padding : 10px;
   .cartButton {
     width: 100%;
     margin-top: 30px;
-    background:#1565C0;
     padding: 20px 0;
     font-size: 1.1em;
     line-height: 1.1em;
@@ -124,7 +122,6 @@ padding : 10px;
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     border-radius: 5px;
-    color: #F2F2F2;
     cursor: pointer;
   }
 /* card page */

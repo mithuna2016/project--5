@@ -105,14 +105,28 @@ app.get("/cartpage" ,function(req,res){
     
   });
 });
-//render checkoutPage --------------------------------------------------------------------------------------------------
+
 app.get("/checkoutpage" ,function(req,res){
   res.render('checkoutpage',{
     
   });
 });
 
+app.post("/checkoutpage" ,function(req,res){
+ 
 
+ const userInform = {
+userFirstName : req.body.firstName ,
+userLastName :req.body.lastName,
+
+userAddress :req.body.address,
+userAddress2:req.body.address2,
+userCountry:req.body.country,
+userPostcode:req.body.postCode,
+userEmail:req.body.email
+
+
+ };
  
  
-
+});
